@@ -8,7 +8,7 @@ namespace Creobit.Advertising.Sandbox
 
         protected override void Awake()
         {
-            var configuration = new FakeConfiguration()
+            var configuration = new FakePromoterConfiguration()
             {
                 AdvertisementMap = new (string AdvertisementId, string Tag)[]
                 {
@@ -16,9 +16,8 @@ namespace Creobit.Advertising.Sandbox
                 }
             };
 
-            configuration.ExceptionDetected += exception => Debug.LogException(exception);
-
             Promoter = new FakePromoter(configuration);
+            Promoter.ExceptionDetected += exception => Debug.LogException(exception);
         }
 
         #endregion
