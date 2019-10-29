@@ -9,7 +9,7 @@ namespace Creobit.Advertising.Sandbox
 #if CREOBIT_ADVERTISING_UNITY && (UNITY_ANDROID || UNITY_IOS)
         protected override void Awake()
         {
-            var configuration = new UnityConfiguration(GameId, _debugMode, _testMode)
+            var configuration = new UnityPromoterConfiguration(GameId, _debugMode, _testMode)
             {
                 AdvertisementMap = new (string AdvertisementId, string PlacementId)[]
                 {
@@ -17,9 +17,8 @@ namespace Creobit.Advertising.Sandbox
                 }
             };
 
-            configuration.ExceptionDetected += exception => Debug.LogException(exception);
-
             Promoter = new UnityPromoter(configuration);
+            Promoter.ExceptionDetected += exception => Debug.LogException(exception);
         }
 #endif
 
