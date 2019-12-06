@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
+#if !UNITY_ANDROID
 namespace Creobit.Advertising.Sandbox
 {
     public sealed class UnityExample : Example
     {
-        #region MonoBehaviour
+#region MonoBehaviour
 
 #if CREOBIT_ADVERTISING_UNITY && (UNITY_ANDROID || UNITY_IOS)
         protected override void Awake()
@@ -22,8 +23,8 @@ namespace Creobit.Advertising.Sandbox
         }
 #endif
 
-        #endregion
-        #region UnityExample
+#endregion
+#region UnityExample
 
         [Header("Unity")]
 
@@ -55,6 +56,7 @@ namespace Creobit.Advertising.Sandbox
             }
         }
 
-        #endregion
+#endregion
     }
 }
+#endif
